@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>كريستيانو رونالدو | CR7</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --red: #e10600;
+            --red2: #ff2a1f;
+            --bg: #070707;
+            --card: #121212;
+            --line: #2a2a2a;
+            --tx: #f4f4f4;
+            --mut: #a0a0a0;
+            color-scheme: dark;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'Cairo', Tahoma, Arial, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden
+        }
+
+        .num,
+        .big {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            letter-spacing: 2px
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            inset-inline: 0;
+            z-index: 20;
+            background: rgba(7, 7, 7, .85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            padding: calc(10px + env(safe-area-inset-top, 0px)) 5% 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 125px;
+        }
+
+        .logo {
+            font-size: 30px;
+            color: var(--red)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 26px;
+            list-style: none
+        }
+
+        nav a {
+            color: var(--tx);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: .3s
+        }
+
+        nav a:hover {
+            color: var(--red2)
+        }
+
+        .burger {
+            display: none;
+            background: none;
+            border: 0;
+            color: var(--tx);
+            font-size: 28px;
+            cursor: pointer
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 5% 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 40%, #5a0300 0%, #150100 45%, #070707 80%)
+        }
+
+        .hero::before {
+            content: "7";
+            position: absolute;
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: min(95vw, 80vh);
+            color: rgba(225, 6, 0, .12);
+            line-height: 1;
+            z-index: 0;
+            animation: pulse 5s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(1.06);
+                color: rgba(225, 6, 0, .2)
+            }
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .tag {
+            border: 1px solid var(--red);
+            color: var(--red2);
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 14px
+        }
+
+        .hero h1 {
+            font-size: clamp(46px, 11vw, 120px);
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 0 0 40px rgba(225, 6, 0, .6)
+        }
+
+        .hero h1 span {
+            color: var(--red2)
+        }
+
+        .big {
+            font-size: clamp(70px, 16vw, 190px);
+            line-height: .9;
+            background: linear-gradient(180deg, #fff, var(--red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 8px 0
+        }
+
+        .hero p {
+            color: var(--mut);
+            max-width: 620px;
+            font-size: clamp(15px, 2.5vw, 19px)
+        }
+
+        .btns {
+            display: flex;
+            gap: 14px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .btn {
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-decoration: none;
+            font-size: 16px;
+            transition: .3s
+        }
+
+        .b1 {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(225, 6, 0, .5)
+        }
+
+        .b1:hover {
+            background: var(--red2);
+            transform: translateY(-3px)
+        }
+
+        .b2 {
+            border: 2px solid var(--red);
+            color: #fff
+        }
+
+        .b2:hover {
+            background: var(--red)
+        }
+
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: auto
+        }
+
+        h2 {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 900;
+            margin-bottom: 10px
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 5px;
+            background: var(--red);
+            margin-top: 8px;
+            border-radius: 5px
+        }
+
+        .sub {
+            color: var(--mut);
+            margin-bottom: 36px
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px
+        }
+
+        .stat {
+            background: linear-gradient(160deg, #1c0200, var(--card));
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 26px 12px;
+            text-align: center;
+            transition: .3s
+        }
+
+        .stat:hover {
+            border-color: var(--red);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(225, 6, 0, .25)
+        }
+
+        .stat .num {
+            font-size: clamp(42px, 7vw, 64px);
+            color: var(--red2);
+            line-height: 1
+        }
+
+        .stat small {
+            color: var(--mut);
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 24px;
+            transition: .3s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            inset-inline: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), transparent)
+        }
+
+        .card:hover {
+            border-color: var(--red);
+            transform: translateY(-5px)
+        }
+
+        .card .ic {
+            font-size: 34px
+        }
+
+        .card h3 {
+            margin: 6px 0;
+            font-size: 20px;
+            color: #fff
+        }
+
+        .card p {
+            color: var(--mut);
+            font-size: 15px
+        }
+
+        .card b {
+            color: var(--red2)
+        }
+
+        .tl {
+            position: relative;
+            padding-inline-start: 30px;
+            border-inline-start: 3px solid var(--red)
+        }
+
+        .ti {
+            position: relative;
+            margin-bottom: 28px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px 22px
+        }
+
+        .ti::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: -40px;
+            top: 22px;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 14px var(--red)
+        }
+
+        .ti .y {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 28px;
+            color: var(--red2);
+            letter-spacing: 2px
+        }
+
+        .ti h4 {
+            font-size: 19px
+        }
+
+        .ti p {
+            color: var(--mut);
+            font-size: 15px
+        }
+
+        .rec {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .rec span {
+            background: #1a0605;
+            border: 1px solid #5a1410;
+            padding: 9px 18px;
+            border-radius: 40px;
+            font-size: 14.5px;
+            font-weight: 700
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 1px solid var(--line);
+            color: var(--mut);
+            font-size: 14px
+        }
+
+        footer .num {
+            font-size: 34px;
+            color: var(--red)
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s
+        }
+
+        .rv.on {
+            opacity: 1;
+            transform: none
+        }
+
+        @media(max-width:760px) {
+            .burger {
+                display: block
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                inset-inline: 0;
+                background: #0b0b0b;
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: .4s
+            }
+
+            nav ul.open {
+                max-height: 360px;
+                border-bottom: 1px solid var(--red)
+            }
+
+            nav li {
+                padding: 14px 5%;
+                border-top: 1px solid var(--line)
+            }
+
+            section {
+                padding: 60px 5%
+            }
+
+            .ti::before {
+                inset-inline-start: -38px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo big">CR7</div>
+        <button class="burger" id="bg" aria-label="القائمة">☰</button>
+        <ul id="mn">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#stats">أرقام</a></li>
+            <li><a href="#trophies">البطولات</a></li>
+            <li><a href="#awards">الجوائز</a></li>
+            <li><a href="#career">المسيرة</a></li>
+            <li><a href="#records">الأرقام القياسية</a></li>
+        </ul>
+        <br>
+        <br>
+    </nav>
+    <br>
+
+    <header class="hero" id="home">
+        <div class="tag">⚽ الأسطورة البرتغالية • مواليد 5 فبراير 1985 – ماديرا</div>
+        <h1>كريستيانو <span>رونالدو</span></h1>
+        <div class="big">CR7</div>
+        <p>لاعب لا يعرف المستحيل. قصة كفاح من جزيرة صغيرة إلى قمة كرة القدم العالمية، مليئة بالبطولات والأرقام القياسية
+            والأهداف التاريخية.</p>
+        <div class="btns"><a href="#trophies" class="btn b1">شوف البطولات 🏆</a><a href="#career"
+                class="btn b2">المسيرة</a></div>
+    </header>
+
+    <section id="stats">
+        <h2>أرقام لا تُصدَّق</h2>
+        <p class="sub">أرقام تقريبية حتى آخر تحديث، وتتغير مع كل مباراة.</p>
+        <div class="stats">
+            <div class="stat rv">
+                <div class="num" data-n="950" data-s="+">0</div><small>هدف رسمي في مسيرته</small>
+            </div>
+            <div class="stat rv">
+                <div class="num" data-n="140" data-s="+">0</div><small>هدف دولي (رقم قياسي)</small>
+            </div>
+            <div class="stat rv">
+                <div class="num" data-n="220" data-s="+">0</div><small>مباراة دولية (رقم قياسي)</small>
+            </div>
+            <div class="stat rv">
+                <div class="num" data-n="5">0</div><small>كرات ذهبية</small>
+            </div>
+            <div class="stat rv">
+                <div class="num" data-n="5">0</div><small>دوري أبطال أوروبا</small>
+            </div>
+            <div class="stat rv">
+                <div class="num" data-n="450">0</div><small>هدف مع ريال مدريد</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="trophies">
+        <h2>البطولات الكبرى</h2>
+        <p class="sub">رصيد ضخم من الألقاب مع الأندية والمنتخب.</p>
+        <div class="grid">
+            <div class="card rv">
+                <div class="ic">🏆</div>
+                <h3>دوري أبطال أوروبا</h3>
+                <p><b>5 مرات:</b> مع مانشستر يونايتد 2008، ومع ريال مدريد 2014 و2016 و2017 و2018.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🇵🇹</div>
+                <h3>مع منتخب البرتغال</h3>
+                <p><b>يورو 2016</b> (أول لقب كبير للبرتغال)، و<b>دوري الأمم الأوروبية</b> 2019 و2025.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🏴</div>
+                <h3>الدوري الإنجليزي</h3>
+                <p><b>3 ألقاب</b> مع مانشستر يونايتد (2007، 2008، 2009) بالإضافة إلى كأس الاتحاد وكأس الرابطة.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🇪🇸</div>
+                <h3>إسبانيا – ريال مدريد</h3>
+                <p><b>لقبان في الليجا</b> (2012، 2017)، وكأس الملك مرتين، و3 كؤوس عالم أندية.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🇮🇹</div>
+                <h3>إيطاليا – يوفنتوس</h3>
+                <p><b>لقبان في الدوري الإيطالي</b> (2019، 2020) وكأس السوبر وكأس إيطاليا.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🇸🇦</div>
+                <h3>السعودية – النصر</h3>
+                <p>بطولة <b>كأس الأندية العربية</b> 2023 وهدّاف الدوري السعودي في موسم 2023-24.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <h2>الجوائز الفردية</h2>
+        <p class="sub">أكثر لاعب يحصد الجوائز في جيله.</p>
+        <div class="grid">
+            <div class="card rv">
+                <div class="ic">⭐</div>
+                <h3>الكرة الذهبية × 5</h3>
+                <p>2008 • 2013 • 2014 • 2016 • 2017</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">👟</div>
+                <h3>الحذاء الذهبي الأوروبي × 4</h3>
+                <p>2008 • 2011 • 2014 • 2015</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🥇</div>
+                <h3>أفضل لاعب في العالم – فيفا</h3>
+                <p>2008 و2016 و2017 بالإضافة إلى جوائز الأفضل في أوروبا واللاعب الأفضل في البرتغال مرات عديدة.</p>
+            </div>
+            <div class="card rv">
+                <div class="ic">🎯</div>
+                <h3>هداف دوري الأبطال</h3>
+                <p>الهداف التاريخي للبطولة، وتصدّر لائحة الهدافين في 7 مواسم.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="career">
+        <h2>رحلة الأسطورة</h2>
+        <p class="sub">من ماديرا إلى العالم كله.</p>
+        <div class="tl">
+            <div class="ti rv">
+                <div class="y">2002 – 2003</div>
+                <h4>سبورتينغ لشبونة</h4>
+                <p>بداية الانطلاقة الاحترافية، وسرعان ما لفت أنظار كبار أوروبا.</p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2003 – 2009</div>
+                <h4>مانشستر يونايتد</h4>
+                <p>تحوّل إلى نجم عالمي مع السير أليكس فيرغسون، وحصد الكرة الذهبية الأولى ودوري الأبطال والدوري
+                    الإنجليزي.</p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2009 – 2018</div>
+                <h4>ريال مدريد</h4>
+                <p>أعظم فترات مسيرته: 450 هدفًا في 438 مباراة، وأصبح الهداف التاريخي للنادي، وحقق 4 ألقاب أبطال أوروبا.
+                </p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2016</div>
+                <h4>يورو 2016</h4>
+                <p>قاد البرتغال إلى أول لقب كبير في تاريخها بعد الفوز على فرنسا في النهائي.</p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2018 – 2021</div>
+                <h4>يوفنتوس</h4>
+                <p>لقبان في الدوري الإيطالي وهداف الكالتشيو في موسم 2020-21.</p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2021 – 2022</div>
+                <h4>العودة إلى يونايتد</h4>
+                <p>عاد إلى أولد ترافورد وسجّل 24 هدفًا في موسمه الأخير.</p>
+            </div>
+            <div class="ti rv">
+                <div class="y">2023 – الآن</div>
+                <h4>النصر السعودي</h4>
+                <p>أحدث نقلة في الدوري السعودي، وحطّم أرقامًا كثيرة وما زال يواصل التسجيل.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="records">
+        <h2>أرقام قياسية</h2>
+        <p class="sub">أكثر من مجرد لاعب.</p>
+        <div class="rec rv">
+            <span>🥅 أكثر هداف دولي في التاريخ</span>
+            <span>🧤 أكثر لاعب مشاركةً دوليًا</span>
+            <span>⚽ الهداف التاريخي لدوري الأبطال</span>
+            <span>🌍 أول لاعب يسجّل في 5 نسخ من كأس العالم</span>
+            <span>🇪🇺 الهداف التاريخي لبطولة يورو</span>
+            <span>🏟️ الهداف التاريخي لريال مدريد</span>
+            <span>📱 من أكثر الأشخاص متابعةً في العالم على السوشيال ميديا</span>
+            <span>🔥 أول لاعب يتجاوز 900 هدف رسمي</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="num">CR7 • SIUUUU!</div>
+        <p>موقع معجبين غير رسمي مخصص لتكريم مسيرة كريستيانو رونالدو.</p>
+    </footer>
+
+    <script>
+        const bg = document.getElementById('bg'), mn = document.getElementById('mn');
+        bg.onclick = () => mn.classList.toggle('open');
+        mn.querySelectorAll('a').forEach(a => a.onclick = () => mn.classList.remove('open'));
+        function count(el) {
+            const t = +el.dataset.n, s = el.dataset.s || ''; let c = 0; const st = Math.max(1, Math.ceil(t / 60));
+            const i = setInterval(() => { c += st; if (c >= t) { c = t; clearInterval(i) } el.textContent = c + (c === t ? s : '') }, 25)
+        }
+        const io = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('on');
+                const n = e.target.querySelector('.num[data-n]'); if (n && !n.done) { n.done = 1; count(n) } io.unobserve(e.target)
+            }
+        }), { threshold: .15 });
+        document.querySelectorAll('.rv').forEach(el => io.observe(el));
+    </script>
+</body>
+
+</html>
